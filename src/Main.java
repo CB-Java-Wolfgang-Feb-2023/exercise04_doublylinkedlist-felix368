@@ -49,6 +49,22 @@ public class Main {
         myList.removeFirst();
         myList.printList();
 
+        myList.clear();
+
+        for (int a = 0; a < 5; a++) {
+
+            for (int i = 0; i < 8; i++) {
+                myList.addLast(i );
+            }
+            for (int i = 0; i < 5; i++) {
+                myList.addLast(i );
+            }
+        }
+
+        myList.printList();
+        myList.removeDuplicates();
+        myList.printList();
+
 
     }
 

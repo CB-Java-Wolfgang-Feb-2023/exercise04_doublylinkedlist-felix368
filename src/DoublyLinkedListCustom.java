@@ -160,6 +160,8 @@ public class DoublyLinkedListCustom implements MyListInterface {
         }
     }
 
+
+
     @Override
     public int getSize() {
 
@@ -217,6 +219,37 @@ public class DoublyLinkedListCustom implements MyListInterface {
     @Override
     public void removeDuplicates() {
 
+        Node currentNode = head;
+        while (currentNode != null){
+
+            int nodeValue = currentNode.getValue();
+            Node checkNode = head;
+            while (checkNode != null){
+
+                if(checkNode.getValue() == nodeValue && checkNode != currentNode){
+
+                    if(checkNode.getPrev() == null){
+                        head =checkNode.getNext();
+                    }
+                    else if(checkNode.getNext() == null){
+                        tail = checkNode.getPrev();
+
+                    }else {
+                        Node nodeBefore = checkNode.getPrev();
+                        Node afterNode = checkNode.getNext();
+
+                        nodeBefore.setNext(afterNode);
+                        afterNode.setPrev(nodeBefore);
+                    }
+
+                }
+                checkNode = checkNode.getNext();
+            }
+
+
+            currentNode = currentNode.getNext();
+        }
+
     }
 
     @Override
@@ -252,12 +285,9 @@ public class DoublyLinkedListCustom implements MyListInterface {
 
     @Override
     public boolean insertAfter(int key, int data) {
-        return false;
+        addAtIndex(key+1,data);
+        return true;
     }
 
-    @Override
-    public Node deleteKey(int key) {
-        return null;
-    }
 }
 
